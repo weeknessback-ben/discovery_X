@@ -1,0 +1,10 @@
+# File scope (allowlist) — discovery-agent menolak menyentuh host di luar daftar ini.
+# Satu entri per baris. '#' untuk komentar.
+#
+#   example.com       -> cocok persis "example.com"
+#   *.example.com     -> cocok apex + semua subdomain (example.com, api.example.com, ...)
+#   10.0.0.5          -> cocok IP persis
+#
+# Contoh untuk lab lokal:
+
+# *.target-lab.internal

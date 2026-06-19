@@ -1,0 +1,26 @@
+# Artefak build & dependensi (dibangun ulang di dalam image)
+target
+frontend/node_modules
+frontend/dist
+
+# Rahasia & state — JANGAN masuk ke build context / image
+config.toml
+config.local.toml
+*.local.toml
+scope.txt
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+*.pem
+*.key
+secrets*
+
+# VCS & misc
+.git
+.gitignore
+*.log
+attack-graph.dot
+*.png
+*.svg

@@ -1,0 +1,53 @@
+[package]
+name = "discovery_x"
+version = "0.1.0"
+edition = "2021"
+description = "discovery_X — autonomous discovery/recon agent (AI-guided) for authorized pentesting"
+
+[[bin]]
+name = "discovery_x"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "gzip", "cookies"] }
+hickory-resolver = "0.24"
+scraper = "0.20"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+clap = { version = "4", features = ["derive"] }
+regex = "1"
+sqlx = { version = "0.8", default-features = false, features = ["sqlite", "runtime-tokio"] }
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+url = "2"
+async-trait = "0.1"
+once_cell = "1"
+petgraph = "0.6"
+swc_core = { version = "69.0.0", features = ["common", "ecma_ast", "ecma_parser", "ecma_visit"] }
+chromiumoxide = { version = "0.7", default-features = false, features = ["tokio-runtime"] }
+futures = "0.3"
+
+# Web dashboard (menggantikan TUI)
+axum = { version = "0.7", features = ["macros"] }
+axum-extra = { version = "0.9", features = ["cookie"] }
+tower = "0.5"
+tower-http = { version = "0.6", features = ["set-header"] }
+rust-embed = "8"
+mime_guess = "2"
+argon2 = "0.5"
+rand = "0.8"
+rpassword = "7"
+
+# Debuginfo dimatikan agar artefak jauh lebih kecil (swc sangat besar) —
+# menghemat ruang disk & memori saat linking.
+[profile.dev]
+debug = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

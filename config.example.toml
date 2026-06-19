@@ -1,0 +1,55 @@
+# Contoh konfigurasi discovery_x. Salin ke config.toml lalu sesuaikan.
+# Jalankan dashboard: discovery_x --config config.toml
+# (lalu buka http://127.0.0.1:7373 — scan & API key diatur dari dashboard)
+
+[server]
+# Alamat bind dashboard. JANGAN ekspos ke jaringan tanpa TLS/reverse-proxy.
+bind = "127.0.0.1:7373"
+admin_user = "admin"
+# Hash Argon2id password admin — buat dengan: discovery_x hash-password
+# WAJIB diisi (server menolak start tanpa ini). Bisa juga via env
+# DISCOVERY_ADMIN_PASSWORD_HASH (lebih aman daripada commit ke file).
+admin_password_hash = ""
+session_ttl_secs = 28800      # masa berlaku sesi login (8 jam)
+login_max_attempts = 5        # gagal login beruntun sebelum lockout (per-IP)
+login_lockout_secs = 300      # durasi lockout
+
+# Catatan: recon & AI di bawah ini adalah DEFAULT awal; setelah dashboard jalan,
+# keduanya bisa diubah live dari halaman Config (tersimpan di SQLite).
+
+[ai]
+# Endpoint chat-completions OpenAI-compatible (URL lengkap).
+base_url = "https://opencode.ai/zen/go/v1/chat/completions"
+model = "glm-5.2"
+# API key SEBAIKNYA diatur dari dashboard (atau env AGENT_AI_API_KEY).
+# api_key = "sk-..."
+enabled = true
+max_retries = 2          # retry saat output AI gagal divalidasi serde
+temperature = 0.1
+timeout_secs = 60
+
+[recon]
+global_concurrency = 50       # total request HTTP serempak
+per_domain_concurrency = 8    # batas per-domain (anti-membanjiri target)
+request_timeout_secs = 15
+user_agent = "discovery_x/0.1 (+authorized-pentest)"
+max_depth = 3                 # kedalaman crawl dari seed
+enable_subdomain_enum = false # set true untuk enumerasi subdomain via wordlist
+# subdomain_wordlist = "/path/to/subdomains.txt"  # opsional; default daftar bawaan kecil
+
+enable_feeds = true           # ambil & parse robots.txt + sitemap.xml dari seed
+enable_dirbust = true         # fingerprint tech + tebak path khas framework (wp-json, _next, dll)
+max_js_probes = 40            # batas endpoint yang diprobe dari satu file/halaman JS
+max_dirbust = 60              # batas jumlah path tebakan yang dicoba
+
+# Render JS (SPA) via headless Chrome — butuh Chrome/Chromium terpasang.
+# Bisa juga diaktifkan ad-hoc lewat flag --render.
+enable_render = false
+verify_live = false           # verifikasi endpoint hidup via headless (deteksi soft-404 SPA)
+render_max_concurrent = 2     # jumlah tab render serempak
+render_timeout_secs = 20
+render_wait_ms = 800          # jeda agar JS sempat me-render DOM
+
+[output]
+db_path = "discovery.db"          # SQLite: temuan (tabel assets) + dedup/resume
+graph_path = "attack-graph.dot"   # attack graph diekspor ke DOT (render: dot -Tpng)

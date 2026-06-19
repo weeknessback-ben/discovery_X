@@ -1,0 +1,35 @@
+/target
+
+# ── Rahasia & state runtime (JANGAN pernah di-commit) ──────────────
+# Konfigurasi lokal bisa memuat API key / hash password admin.
+config.toml
+config.local.toml
+*.local.toml
+# Scope target (daftar host yang diuji) — jaga kerahasiaan engagement.
+scope.txt
+# Database SQLite: temuan + API key + dedup/resume.
+discovery.db
+discovery.db-wal
+discovery.db-shm
+*.db
+*.db-wal
+*.db-shm
+# Output attack graph & artefak render.
+attack-graph.dot
+*.png
+*.svg
+# Variabel lingkungan / kredensial.
+.env
+.env.*
+*.pem
+*.key
+secrets*
+
+# ── Frontend (React/Vite) ──────────────────────────────────────────
+frontend/node_modules
+# Catatan: frontend/dist SENGAJA tidak di-ignore — di-embed ke binary saat
+# `cargo build`. Bangun ulang dengan `cd frontend && npm run build`.
+
+# ── Misc ───────────────────────────────────────────────────────────
+*.log
+.DS_Store

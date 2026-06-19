@@ -1,0 +1,32 @@
+# discovery_X — jalankan dashboard via Docker.
+#
+# Sebelum `docker compose up`, siapkan kredensial admin (lihat README):
+#   1) buat hash:  docker compose run --rm discovery_x hash-password
+#   2) taruh hasilnya di file .env:  DISCOVERY_ADMIN_PASSWORD_HASH='$argon2id$...'
+#      (opsional)  AGENT_AI_API_KEY=sk-...   untuk mengaktifkan AI brain
+#
+# Port dipetakan HANYA ke 127.0.0.1 host (tidak terekspos ke LAN). Untuk akses
+# jarak jauh, taruh di belakang reverse-proxy TLS.
+
+services:
+  discovery_x:
+    build: .
+    image: discovery_x:latest
+    container_name: discovery_x
+    ports:
+      - "127.0.0.1:7373:7373"
+    environment:
+      DISCOVERY_ADMIN_USER: "${DISCOVERY_ADMIN_USER:-admin}"
+      DISCOVERY_ADMIN_PASSWORD_HASH: "${DISCOVERY_ADMIN_PASSWORD_HASH:?jalankan hash-password dulu lalu set di .env}"
+      AGENT_AI_API_KEY: "${AGENT_AI_API_KEY:-}"
+      DISCOVERY_BIND: "0.0.0.0:7373"
+    volumes:
+      # Persistensi DB (temuan + riwayat). Named volume dipakai (bukan bind mount)
+      # agar kepemilikan cocok dengan user non-root (uid 10001) di dalam image —
+      # bind mount dari host justru menyebabkan SQLite gagal menulis (permission).
+      - dxdata:/data
+    shm_size: "1gb"      # Chromium butuh /dev/shm cukup besar saat render SPA
+    restart: unless-stopped
+
+volumes:
+  dxdata:
