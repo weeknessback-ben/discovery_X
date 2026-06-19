@@ -147,15 +147,6 @@ Proxy hanya terekspos di jaringan internal Docker (tidak ke host).
 
 ---
 
-
-Skrip akan **membatalkan** bila menemukan file rahasia ter-stage (`config.toml`, `*.db`,
-`.env`, `scope.txt`, …) atau pola rahasia di isi commit (`$argon2id$…`, `sk-…`). Ia tidak
-pernah `push --force`. Bila belum siap pakai skrip, minimal jalankan `--check` lebih dulu.
-
-> Catatan: `frontend/dist` **sengaja** di-commit (di-embed ke binary saat `cargo build`).
-
----
-
 ## Arsitektur
 
 ```
@@ -191,3 +182,10 @@ Peningkatan cakupan discovery:
   untuk mendeteksi **soft-404** (HTTP 200 tapi sebenarnya halaman error).
 - **Render JS SPA** via headless Chrome (`--render` / `enable_render`) — degrade otomatis bila
   Chrome tak tersedia.
+
+---
+
+## Keamanan & lisensi
+
+- Laporan kerentanan & kebijakan penggunaan sah: lihat [`SECURITY.md`](./SECURITY.md).
+- Lisensi: [MIT](./LICENSE).
