@@ -12,15 +12,6 @@
   <!-- frame -->
   <rect x="1" y="1" width="1198" height="438" rx="18" fill="url(#bg)" stroke="#2a3340"/>
 
-  <!-- faint attack-graph motif (top-right) -->
-  <g stroke="#2a3340" stroke-width="1.5" fill="#2a3340" opacity="0.6">
-    <line x1="980" y1="48" x2="1060" y2="80"/><line x1="1060" y1="80" x2="1120" y2="56"/>
-    <line x1="1060" y1="80" x2="1100" y2="120"/><line x1="980" y1="48" x2="1020" y2="110"/>
-    <circle cx="980" cy="48" r="4"/><circle cx="1060" cy="80" r="6" fill="#4ea1ff"/>
-    <circle cx="1120" cy="56" r="4"/><circle cx="1100" cy="120" r="4" fill="#2bd66a"/>
-    <circle cx="1020" cy="110" r="4"/>
-  </g>
-
   <!-- title -->
   <g transform="translate(40,40)">
     <circle cx="14" cy="22" r="13" fill="none" stroke="#4ea1ff" stroke-width="2.5"/>
@@ -31,11 +22,11 @@
     <text x="42" y="64" font-size="17" fill="#8593a3">AI-guided autonomous discovery &amp; recon — for <tspan fill="#2bd66a">authorized</tspan> pentesting</text>
   </g>
 
-  <!-- authorized pill (top-right) -->
-  <g transform="translate(1004,150)">
-    <rect x="0" y="0" width="156" height="30" rx="15" fill="#14463a" stroke="#1f6b54"/>
-    <path d="M16 7 l9 3 v6 c0 5 -4 8 -9 10 c-5 -2 -9 -5 -9 -10 v-6 z" fill="none" stroke="#7af0c0" stroke-width="2"/>
-    <text x="40" y="20" font-size="13" font-weight="600" fill="#7af0c0">scope-gated</text>
+  <!-- authorized pill (top-right, sejajar judul) -->
+  <g transform="translate(1004,46)">
+    <rect x="0" y="0" width="156" height="32" rx="16" fill="#14463a" stroke="#1f6b54"/>
+    <path d="M22 8 l9 3 v6 c0 5 -4 8 -9 10 c-5 -2 -9 -5 -9 -10 v-6 z" fill="none" stroke="#7af0c0" stroke-width="2"/>
+    <text x="46" y="21" font-size="13" font-weight="600" fill="#7af0c0">scope-gated</text>
   </g>
 
   <!-- pipeline -->
