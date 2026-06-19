@@ -147,22 +147,6 @@ Proxy hanya terekspos di jaringan internal Docker (tidak ke host).
 
 ---
 
-## Unggah ke GitHub dengan aman
-
-Repo ini memuat **rahasia lokal** yang TIDAK boleh ikut ter-publish: `config.toml`
-(hash password / API key), `scope.txt` (target engagement), `discovery.db` (temuan + key),
-`.env`, dan output `attack-graph.dot`. Semuanya sudah ada di [`.gitignore`](./.gitignore).
-
-Gunakan helper yang memverifikasi dulu sebelum push:
-
-```bash
-# Audit saja (tanpa commit) — pastikan tak ada rahasia yang akan terunggah:
-scripts/publish-github.sh --check
-
-# Commit + push (buat dulu repo KOSONG di GitHub):
-scripts/publish-github.sh -m "initial commit: discovery_X" \
-    --remote git@github.com:USER/REPO.git
-```
 
 Skrip akan **membatalkan** bila menemukan file rahasia ter-stage (`config.toml`, `*.db`,
 `.env`, `scope.txt`, …) atau pola rahasia di isi commit (`$argon2id$…`, `sk-…`). Ia tidak
