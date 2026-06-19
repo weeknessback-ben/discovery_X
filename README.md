@@ -1,4 +1,4 @@
-# discovery_X
+<h1 align="center">discovery_X</h1>
 
 <p align="center">
   <img src="assets/banner.svg" alt="discovery_X — agen discovery/recon otonom: Target → Crawl+JS → Fingerprint → AI brain → Attack graph" width="100%">

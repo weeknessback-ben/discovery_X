@@ -12,14 +12,15 @@
   <!-- frame -->
   <rect x="1" y="1" width="1198" height="438" rx="18" fill="url(#bg)" stroke="#2a3340"/>
 
-  <!-- title -->
-  <g transform="translate(40,40)">
-    <circle cx="14" cy="22" r="13" fill="none" stroke="#4ea1ff" stroke-width="2.5"/>
-    <circle cx="14" cy="22" r="3.5" fill="#4ea1ff"/>
-    <line x1="14" y1="2" x2="14" y2="9" stroke="#4ea1ff" stroke-width="2.5"/>
-    <line x1="14" y1="35" x2="14" y2="42" stroke="#4ea1ff" stroke-width="2.5"/>
-    <text x="40" y="36" font-size="42" font-weight="800" fill="#ffffff">discovery<tspan fill="#4ea1ff">_X</tspan></text>
-    <text x="42" y="64" font-size="17" fill="#8593a3">AI-guided autonomous discovery &amp; recon — for <tspan fill="#2bd66a">authorized</tspan> pentesting</text>
+  <!-- tagline (tanpa wordmark — judul ada di README) -->
+  <g transform="translate(40,52)">
+    <circle cx="15" cy="15" r="14" fill="none" stroke="#4ea1ff" stroke-width="2.5"/>
+    <circle cx="15" cy="15" r="3.5" fill="#4ea1ff"/>
+    <line x1="15" y1="-6" x2="15" y2="2" stroke="#4ea1ff" stroke-width="2.5"/>
+    <line x1="15" y1="28" x2="15" y2="36" stroke="#4ea1ff" stroke-width="2.5"/>
+    <line x1="-6" y1="15" x2="2" y2="15" stroke="#4ea1ff" stroke-width="2.5"/>
+    <line x1="28" y1="15" x2="36" y2="15" stroke="#4ea1ff" stroke-width="2.5"/>
+    <text x="46" y="21" font-size="21" font-weight="600" fill="#d7dee6">AI-guided autonomous discovery &amp; recon <tspan fill="#8593a3">— for</tspan> <tspan fill="#2bd66a">authorized</tspan> <tspan fill="#8593a3">pentesting</tspan></text>
   </g>
 
   <!-- authorized pill (top-right, sejajar judul) -->
