@@ -1,14 +1,21 @@
 # discovery_X
 
-AI-guided **autonomous discovery agent** untuk pentesting/recon yang **terautorisasi**,
-ditulis dalam Rust. Engine recon asinkron (`tokio`) menggabungkan crawling HTML, fingerprint
-HTTP, enumerasi subdomain, dan analisis JavaScript; sebuah **AI brain** (model OpenAI-compatible,
-mis. GLM-5.2) menyaring kandidat dari file JS untuk menemukan *hidden endpoint*.
+**Agen discovery/recon otonom untuk pentesting terautorisasi**, dikendalikan penuh dari
+dashboard web. Mengumpulkan permukaan serangan sebuah target lalu memakai AI untuk
+menyimpulkan endpoint tersembunyi — dengan guardrail scope yang ketat.
 
-Dikontrol lewat **dashboard web berautentikasi** (login OWASP-hardened): atur config & API key,
-jalankan scan, dan pantau progres live — semua dari browser. Tiap temuan menampilkan
-**stack/teknologi terdeteksi (+versi)**, **HTTP status code**, server header, judul, dan
-status liveness.
+**Kemampuan inti:**
+- 🔎 **Temukan hidden endpoint** — crawl HTML + analisis JavaScript (file & inline) untuk
+  menggali path/endpoint yang tak tertaut; berjalan dengan **atau tanpa** AI.
+- 🧬 **Fingerprint stack + versi** (WordPress, Next.js, Laravel, nginx, …) lalu **dirbust
+  terarah** ke path khas tiap teknologi.
+- ✅ **Verifikasi liveness** (deteksi *soft-404*) & **render SPA** via headless browser.
+- 🤖 **AI brain multi-provider** — endpoint OpenAI-compatible apa pun, atau proxy **LiteLLM**
+  untuk OpenAI / Anthropic / Gemini / Ollama / dll.
+- 🕸️ **Attack graph interaktif** — petakan relasi aset; endpoint hasil inferensi AI ditonjolkan.
+- 🖥️ **Dashboard web (OWASP-hardened)** — tiap temuan menampilkan **stack + versi**,
+  **HTTP status code**, server, judul, dan status hidup/mati. Riwayat scan tersimpan.
+- 🐳 **Deploy satu perintah** dengan Docker (Chromium + Graphviz sudah termasuk).
 
 > ⚠️ **Hanya untuk target yang Anda berwenang menyentuhnya.** Tiap scan mewajibkan
 > scope allowlist + centang konfirmasi otorisasi; seed di luar scope ditolak.
