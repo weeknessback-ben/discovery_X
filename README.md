@@ -103,6 +103,43 @@ reverse-proxy TLS.
 
 ---
 
+## AI brain & banyak provider (LiteLLM)
+
+AI brain memakai endpoint **chat-completions OpenAI-compatible**, jadi provider apa pun
+yang berbicara format itu bisa langsung dipakai — cukup atur **Base URL + Model + API key**
+(dari dashboard **Config**, file `config.toml`, atau env `AGENT_AI_BASE_URL` / `AGENT_AI_MODEL`
+/ `AGENT_AI_API_KEY`). Default: GLM-5.2.
+
+Untuk mengakses **banyak provider sekaligus** (OpenAI, Anthropic/Claude, Gemini, Ollama, …)
+tanpa mengubah kode, pakai proxy **LiteLLM** yang sudah disertakan di `docker-compose.yml`
+(profil `litellm`):
+
+```bash
+# 1. Siapkan daftar model/provider.
+cp litellm.config.example.yaml litellm.config.yaml      # sunting model_list sesuai kebutuhan
+
+# 2. Lengkapi .env (kunci provider tidak masuk ke file config — diambil dari env):
+cat >> .env <<'EOF'
+LITELLM_MASTER_KEY=sk-rahasia-proxy-anda
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GEMINI_API_KEY=...
+# Arahkan discovery_X ke proxy + pilih alias model dari litellm.config.yaml:
+AGENT_AI_BASE_URL=http://litellm:4000/v1/chat/completions
+AGENT_AI_MODEL=claude
+AGENT_AI_API_KEY=sk-rahasia-proxy-anda
+EOF
+
+# 3. Jalankan discovery_X + LiteLLM bersama.
+docker compose --profile litellm up -d --build
+```
+
+LiteLLM merutekan satu endpoint ke banyak provider berdasarkan `model_name` (alias) di
+`litellm.config.yaml`. Ganti model cukup dengan mengubah `AGENT_AI_MODEL` ke alias lain.
+Proxy hanya terekspos di jaringan internal Docker (tidak ke host).
+
+---
+
 ## Unggah ke GitHub dengan aman
 
 Repo ini memuat **rahasia lokal** yang TIDAK boleh ikut ter-publish: `config.toml`

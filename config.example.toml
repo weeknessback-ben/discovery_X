@@ -19,9 +19,14 @@ login_lockout_secs = 300      # durasi lockout
 
 [ai]
 # Endpoint chat-completions OpenAI-compatible (URL lengkap).
+# Mendukung provider mana pun yang OpenAI-compatible. Untuk akses BANYAK provider
+# (OpenAI/Anthropic/Gemini/Ollama/dll.) arahkan ke proxy LiteLLM, mis.
+#   base_url = "http://litellm:4000/v1/chat/completions"   (lihat README)
+# Bisa juga di-override via env AGENT_AI_BASE_URL / AGENT_AI_MODEL.
 base_url = "https://opencode.ai/zen/go/v1/chat/completions"
 model = "glm-5.2"
 # API key SEBAIKNYA diatur dari dashboard (atau env AGENT_AI_API_KEY).
+# Saat memakai LiteLLM, isi dengan LITELLM_MASTER_KEY proxy.
 # api_key = "sk-..."
 enabled = true
 max_retries = 2          # retry saat output AI gagal divalidasi serde

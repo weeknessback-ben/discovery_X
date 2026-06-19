@@ -1,7 +1,10 @@
-//! Client chat-completions OpenAI-compatible (dipakai untuk GLM-5.2).
+//! Client chat-completions OpenAI-compatible.
 //!
 //! `base_url` adalah URL lengkap endpoint chat-completions, mis.
-//! `https://opencode.ai/zen/go/v1/chat/completions`.
+//! `https://opencode.ai/zen/go/v1/chat/completions` (GLM langsung) atau
+//! `http://litellm:4000/v1/chat/completions` (proxy LiteLLM untuk banyak provider:
+//! OpenAI, Anthropic, Gemini, Ollama, dll.). Karena formatnya sama, satu client ini
+//! cukup; provider dipilih lewat `model` (alias di LiteLLM).
 
 use std::time::Duration;
 

@@ -7,6 +7,10 @@ use serde::{Deserialize, Serialize};
 
 /// Nama env var yang menimpa `ai.api_key` di file config.
 pub const API_KEY_ENV: &str = "AGENT_AI_API_KEY";
+/// Env var yang menimpa `ai.base_url` (mis. mengarahkan ke proxy LiteLLM).
+pub const BASE_URL_ENV: &str = "AGENT_AI_BASE_URL";
+/// Env var yang menimpa `ai.model` (alias model di LiteLLM / nama model provider).
+pub const MODEL_ENV: &str = "AGENT_AI_MODEL";
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct Config {
@@ -55,9 +59,10 @@ impl Default for ServerConfig {
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(default)]
 pub struct AiConfig {
-    /// Endpoint chat-completions OpenAI-compatible.
+    /// Endpoint chat-completions OpenAI-compatible (mis. provider langsung, atau
+    /// proxy LiteLLM untuk akses banyak provider). Override via env AGENT_AI_BASE_URL.
     pub base_url: String,
-    /// Nama model (mis. "glm-5.2").
+    /// Nama model (mis. "glm-5.2") atau alias model di LiteLLM. Override via env AGENT_AI_MODEL.
     pub model: String,
     /// API key. Bila kosong di sini, diambil dari env `AGENT_AI_API_KEY`.
     pub api_key: Option<String>,
@@ -184,6 +189,17 @@ impl Config {
         if let Ok(key) = std::env::var(API_KEY_ENV) {
             if !key.trim().is_empty() {
                 cfg.ai.api_key = Some(key);
+            }
+        }
+        // Endpoint & model AI bisa di-override env (memudahkan wiring ke LiteLLM di Docker).
+        if let Ok(v) = std::env::var(BASE_URL_ENV) {
+            if !v.trim().is_empty() {
+                cfg.ai.base_url = v;
+            }
+        }
+        if let Ok(v) = std::env::var(MODEL_ENV) {
+            if !v.trim().is_empty() {
+                cfg.ai.model = v;
             }
         }
         // Kredensial admin & bind boleh diset via env (lebih aman utk hash password).

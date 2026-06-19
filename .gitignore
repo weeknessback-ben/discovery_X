@@ -5,6 +5,8 @@
 config.toml
 config.local.toml
 *.local.toml
+# Config LiteLLM lokal (commit yang .example saja).
+litellm.config.yaml
 # Scope target (daftar host yang diuji) — jaga kerahasiaan engagement.
 scope.txt
 # Database SQLite: temuan + API key + dedup/resume.

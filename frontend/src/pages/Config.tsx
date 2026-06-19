@@ -64,6 +64,11 @@ export default function Config() {
         Model
         <input value={a.model} onChange={(e) => setA("model", e.target.value)} />
       </label>
+      <p className="muted hint">
+        Mendukung endpoint <b>OpenAI-compatible</b> apa pun. Untuk banyak provider (OpenAI,
+        Anthropic, Gemini, dll.) arahkan Base URL ke proxy <b>LiteLLM</b> lalu pilih Model
+        sesuai alias di config LiteLLM. Lihat README.
+      </p>
       <label>
         API Key {a.key_set && <span className="muted">(tersimpan {a.key_hint})</span>}
         <input

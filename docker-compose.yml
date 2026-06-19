@@ -19,6 +19,13 @@ services:
       DISCOVERY_ADMIN_USER: "${DISCOVERY_ADMIN_USER:-admin}"
       DISCOVERY_ADMIN_PASSWORD_HASH: "${DISCOVERY_ADMIN_PASSWORD_HASH:?jalankan hash-password dulu lalu set di .env}"
       AGENT_AI_API_KEY: "${AGENT_AI_API_KEY:-}"
+      # Endpoint + model AI. Default: provider GLM langsung. Untuk banyak provider,
+      # set keduanya ke proxy LiteLLM (lihat profil 'litellm' & README):
+      #   AGENT_AI_BASE_URL=http://litellm:4000/v1/chat/completions
+      #   AGENT_AI_MODEL=claude            # alias di litellm.config.yaml
+      #   AGENT_AI_API_KEY=$LITELLM_MASTER_KEY
+      AGENT_AI_BASE_URL: "${AGENT_AI_BASE_URL:-https://opencode.ai/zen/go/v1/chat/completions}"
+      AGENT_AI_MODEL: "${AGENT_AI_MODEL:-glm-5.2}"
       DISCOVERY_BIND: "0.0.0.0:7373"
     volumes:
       # Persistensi DB (temuan + riwayat). Named volume dipakai (bukan bind mount)
@@ -26,6 +33,27 @@ services:
       # bind mount dari host justru menyebabkan SQLite gagal menulis (permission).
       - dxdata:/data
     shm_size: "1gb"      # Chromium butuh /dev/shm cukup besar saat render SPA
+    restart: unless-stopped
+
+  # ── Proxy LiteLLM (opsional) — satu endpoint OpenAI-compatible utk banyak provider ──
+  # Aktifkan dengan profil:  docker compose --profile litellm up -d
+  # Siapkan dulu: cp litellm.config.example.yaml litellm.config.yaml  (sunting model)
+  # lalu di .env set LITELLM_MASTER_KEY + kunci provider (OPENAI_API_KEY, dst).
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable
+    container_name: discovery_x_litellm
+    profiles: ["litellm"]
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    volumes:
+      - ./litellm.config.yaml:/app/config.yaml:ro
+    environment:
+      LITELLM_MASTER_KEY: "${LITELLM_MASTER_KEY:-}"
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
+      GLM_API_KEY: "${GLM_API_KEY:-}"
+    expose:
+      - "4000"      # hanya jaringan internal compose (tidak dipetakan ke host)
     restart: unless-stopped
 
 volumes:

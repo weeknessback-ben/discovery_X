@@ -1,0 +1,51 @@
+# Contoh konfigurasi proxy LiteLLM untuk discovery_X.
+# Salin ke litellm.config.yaml lalu sesuaikan daftar model & provider.
+#
+# LiteLLM mengekspos SATU endpoint OpenAI-compatible
+# (http://litellm:4000/v1/chat/completions) yang merutekan ke banyak provider.
+# discovery_X cukup diarahkan ke sana (AGENT_AI_BASE_URL) + memilih `model_name`
+# di bawah (AGENT_AI_MODEL), dan otentikasi pakai LITELLM_MASTER_KEY
+# (dikirim discovery_X sebagai AGENT_AI_API_KEY).
+#
+# Kunci provider TIDAK ditaruh di sini — diambil dari environment (os.environ/*),
+# di-set lewat file .env (lihat README). Jadi file ini aman di-commit.
+
+model_list:
+  # OpenAI
+  - model_name: gpt-4o-mini
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+
+  # Anthropic (Claude)
+  - model_name: claude
+    litellm_params:
+      model: anthropic/claude-3-5-sonnet-latest
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  # Google Gemini
+  - model_name: gemini
+    litellm_params:
+      model: gemini/gemini-1.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+
+  # GLM (endpoint OpenAI-compatible) — default discovery_X
+  - model_name: glm
+    litellm_params:
+      model: openai/glm-5.2
+      api_base: https://opencode.ai/zen/go/v1
+      api_key: os.environ/GLM_API_KEY
+
+  # Model lokal via Ollama (tanpa API key)
+  - model_name: local-llama
+    litellm_params:
+      model: ollama/llama3.1
+      api_base: http://host.docker.internal:11434
+
+general_settings:
+  # Master key proxy. discovery_X mengirim ini sebagai bearer (AGENT_AI_API_KEY).
+  master_key: os.environ/LITELLM_MASTER_KEY
+
+litellm_settings:
+  # Jangan gagal total bila satu provider error — biarkan retry di sisi discovery_X.
+  drop_params: true
