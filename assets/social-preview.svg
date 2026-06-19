@@ -1,39 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" font-family="'Segoe UI', system-ui, -apple-system, Roboto, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" font-family="'Segoe UI', system-ui, -apple-system, Roboto, sans-serif">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#10161f"/>
-      <stop offset="1" stop-color="#0c1016"/>
+      <stop offset="0" stop-color="#10161f"/><stop offset="1" stop-color="#0c1016"/>
     </linearGradient>
     <marker id="arr" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 Z" fill="#4ea1ff"/>
     </marker>
   </defs>
 
-  <!-- frame -->
-  <rect x="1" y="1" width="1198" height="438" rx="18" fill="url(#bg)" stroke="#2a3340"/>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect x="8" y="8" width="1264" height="624" rx="20" fill="none" stroke="#2a3340"/>
 
-  <!-- tagline (tanpa wordmark — judul ada di README) -->
-  <g transform="translate(40,52)">
-    <circle cx="15" cy="15" r="14" fill="none" stroke="#4ea1ff" stroke-width="2.5"/>
-    <circle cx="15" cy="15" r="3.5" fill="#4ea1ff"/>
-    <line x1="15" y1="-6" x2="15" y2="2" stroke="#4ea1ff" stroke-width="2.5"/>
-    <line x1="15" y1="28" x2="15" y2="36" stroke="#4ea1ff" stroke-width="2.5"/>
-    <line x1="-6" y1="15" x2="2" y2="15" stroke="#4ea1ff" stroke-width="2.5"/>
-    <line x1="28" y1="15" x2="36" y2="15" stroke="#4ea1ff" stroke-width="2.5"/>
-    <text x="46" y="21" font-size="21" font-weight="600" fill="#d7dee6">AI-guided autonomous discovery &amp; recon <tspan fill="#8593a3">— for</tspan> <tspan fill="#2bd66a">authorized</tspan> <tspan fill="#8593a3">pentesting</tspan></text>
-  </g>
+  <!-- title -->
+  <text x="640" y="150" text-anchor="middle" font-size="76" font-weight="800" fill="#ffffff">discovery<tspan fill="#4ea1ff">_X</tspan></text>
+  <text x="640" y="196" text-anchor="middle" font-size="23" font-weight="600" fill="#d7dee6">AI-guided autonomous discovery &amp; recon <tspan fill="#8593a3">— for</tspan> <tspan fill="#2bd66a">authorized</tspan> <tspan fill="#8593a3">pentesting</tspan></text>
 
-  <!-- pipeline -->
-  <g transform="translate(0,168)">
-    <!-- arrows -->
+  <!-- pipeline (centered) -->
+  <g transform="translate(80,300)">
     <g stroke="#4ea1ff" stroke-width="2" marker-end="url(#arr)">
-      <line x1="228" y1="56" x2="268" y2="56"/>
-      <line x1="463" y1="56" x2="503" y2="56"/>
-      <line x1="698" y1="56" x2="738" y2="56"/>
-      <line x1="933" y1="56" x2="973" y2="56"/>
+      <line x1="228" y1="56" x2="268" y2="56"/><line x1="463" y1="56" x2="503" y2="56"/>
+      <line x1="698" y1="56" x2="738" y2="56"/><line x1="933" y1="56" x2="973" y2="56"/>
     </g>
 
-    <!-- 1. Target -->
     <g transform="translate(40,0)">
       <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
       <g transform="translate(90,34)" stroke="#4ea1ff" stroke-width="2" fill="none">
@@ -45,7 +33,6 @@
       <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">in-scope only</text>
     </g>
 
-    <!-- 2. Crawl + JS -->
     <g transform="translate(275,0)">
       <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
       <g transform="translate(90,34)">
@@ -56,7 +43,6 @@
       <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">hidden endpoints</text>
     </g>
 
-    <!-- 3. Fingerprint -->
     <g transform="translate(510,0)">
       <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
       <g transform="translate(90,34)">
@@ -68,7 +54,6 @@
       <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">stack + version</text>
     </g>
 
-    <!-- 4. AI brain -->
     <g transform="translate(745,0)">
       <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
       <g transform="translate(90,34)">
@@ -85,7 +70,6 @@
       <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">OpenAI · LiteLLM</text>
     </g>
 
-    <!-- 5. Attack graph -->
     <g transform="translate(980,0)">
       <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
       <g transform="translate(90,34)" stroke="#4ea1ff" stroke-width="2">
@@ -101,13 +85,11 @@
     </g>
   </g>
 
-  <!-- footer badges -->
-  <g transform="translate(40,372)" font-size="13" font-weight="600">
-    <g><rect x="0" y="0" width="152" height="30" rx="15" fill="#14463a" stroke="#1f6b54"/><path d="M20 6 l8 2.6 v5 c0 4.6 -3.4 7.2 -8 8.7 c-4.6 -1.5 -8 -4.1 -8 -8.7 v-5 z" fill="none" stroke="#7af0c0" stroke-width="1.8"/><text x="94" y="20" text-anchor="middle" fill="#7af0c0">scope-gated</text></g>
-    <g transform="translate(164,0)"><rect x="0" y="0" width="148" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="74" y="20" text-anchor="middle" fill="#d7dee6">Web dashboard</text></g>
-    <g transform="translate(324,0)"><rect x="0" y="0" width="158" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="79" y="20" text-anchor="middle" fill="#d7dee6">OWASP-hardened</text></g>
-    <g transform="translate(494,0)"><rect x="0" y="0" width="150" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="75" y="20" text-anchor="middle" fill="#d7dee6">Live SSE updates</text></g>
-    <g transform="translate(656,0)"><rect x="0" y="0" width="92" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="46" y="20" text-anchor="middle" fill="#d7dee6">Docker</text></g>
-    <g transform="translate(760,0)"><rect x="0" y="0" width="150" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="75" y="20" text-anchor="middle" fill="#d7dee6">SQLite history</text></g>
+  <!-- badges (centered) -->
+  <g transform="translate(258,500)" font-size="14" font-weight="600">
+    <g><rect width="152" height="32" rx="16" fill="#14463a" stroke="#1f6b54"/><path d="M20 7 l8 2.6 v5 c0 4.6 -3.4 7.2 -8 8.7 c-4.6 -1.5 -8 -4.1 -8 -8.7 v-5 z" fill="none" stroke="#7af0c0" stroke-width="1.8"/><text x="94" y="21" text-anchor="middle" fill="#7af0c0">scope-gated</text></g>
+    <g transform="translate(166,0)"><rect width="160" height="32" rx="16" fill="#1f2630" stroke="#2a3340"/><text x="80" y="21" text-anchor="middle" fill="#d7dee6">OWASP-hardened</text></g>
+    <g transform="translate(340,0)"><rect width="150" height="32" rx="16" fill="#1f2630" stroke="#2a3340"/><text x="75" y="21" text-anchor="middle" fill="#d7dee6">Multi-provider AI</text></g>
+    <g transform="translate(504,0)"><rect width="98" height="32" rx="16" fill="#1f2630" stroke="#2a3340"/><text x="49" y="21" text-anchor="middle" fill="#d7dee6">Docker</text></g>
   </g>
 </svg>
