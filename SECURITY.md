@@ -26,10 +26,9 @@ Proyek masih pra-1.0; perbaikan keamanan diterapkan pada `main` (rilis terbaru).
 
 Mohon **jangan** membuka issue publik untuk kerentanan keamanan.
 
-Cara melapor (lebih disukai → alternatif):
-1. **GitHub Security Advisory** — tab *Security → Report a vulnerability* di repo ini
-   (laporan privat ke maintainer).
-2. **Email** — bennitampubolon0@gmail.com dengan subjek `SECURITY: discovery_X`.
+Cara melapor:
+- **GitHub Security Advisory** — tab *Security → Report a vulnerability* di repo ini
+  (laporan privat ke maintainer).
 
 Mohon sertakan:
 - deskripsi masalah & dampaknya,
