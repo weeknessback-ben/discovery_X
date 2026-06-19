@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" font-family="'Segoe UI', system-ui, -apple-system, Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10161f"/>
+      <stop offset="1" stop-color="#0c1016"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#4ea1ff"/>
+    </marker>
+  </defs>
+
+  <!-- frame -->
+  <rect x="1" y="1" width="1198" height="438" rx="18" fill="url(#bg)" stroke="#2a3340"/>
+
+  <!-- faint attack-graph motif (top-right) -->
+  <g stroke="#2a3340" stroke-width="1.5" fill="#2a3340" opacity="0.6">
+    <line x1="980" y1="48" x2="1060" y2="80"/><line x1="1060" y1="80" x2="1120" y2="56"/>
+    <line x1="1060" y1="80" x2="1100" y2="120"/><line x1="980" y1="48" x2="1020" y2="110"/>
+    <circle cx="980" cy="48" r="4"/><circle cx="1060" cy="80" r="6" fill="#4ea1ff"/>
+    <circle cx="1120" cy="56" r="4"/><circle cx="1100" cy="120" r="4" fill="#2bd66a"/>
+    <circle cx="1020" cy="110" r="4"/>
+  </g>
+
+  <!-- title -->
+  <g transform="translate(40,40)">
+    <circle cx="14" cy="22" r="13" fill="none" stroke="#4ea1ff" stroke-width="2.5"/>
+    <circle cx="14" cy="22" r="3.5" fill="#4ea1ff"/>
+    <line x1="14" y1="2" x2="14" y2="9" stroke="#4ea1ff" stroke-width="2.5"/>
+    <line x1="14" y1="35" x2="14" y2="42" stroke="#4ea1ff" stroke-width="2.5"/>
+    <text x="40" y="36" font-size="42" font-weight="800" fill="#ffffff">discovery<tspan fill="#4ea1ff">_X</tspan></text>
+    <text x="42" y="64" font-size="17" fill="#8593a3">AI-guided autonomous discovery &amp; recon — for <tspan fill="#2bd66a">authorized</tspan> pentesting</text>
+  </g>
+
+  <!-- authorized pill (top-right) -->
+  <g transform="translate(1004,150)">
+    <rect x="0" y="0" width="156" height="30" rx="15" fill="#14463a" stroke="#1f6b54"/>
+    <path d="M16 7 l9 3 v6 c0 5 -4 8 -9 10 c-5 -2 -9 -5 -9 -10 v-6 z" fill="none" stroke="#7af0c0" stroke-width="2"/>
+    <text x="40" y="20" font-size="13" font-weight="600" fill="#7af0c0">scope-gated</text>
+  </g>
+
+  <!-- pipeline -->
+  <g transform="translate(0,168)">
+    <!-- arrows -->
+    <g stroke="#4ea1ff" stroke-width="2" marker-end="url(#arr)">
+      <line x1="228" y1="56" x2="268" y2="56"/>
+      <line x1="463" y1="56" x2="503" y2="56"/>
+      <line x1="698" y1="56" x2="738" y2="56"/>
+      <line x1="933" y1="56" x2="973" y2="56"/>
+    </g>
+
+    <!-- 1. Target -->
+    <g transform="translate(40,0)">
+      <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
+      <g transform="translate(90,34)" stroke="#4ea1ff" stroke-width="2" fill="none">
+        <circle r="16"/><circle r="9"/><circle r="3" fill="#4ea1ff" stroke="none"/>
+        <line x1="-22" y1="0" x2="-18" y2="0"/><line x1="18" y1="0" x2="22" y2="0"/>
+        <line x1="0" y1="-22" x2="0" y2="-18"/><line x1="0" y1="18" x2="0" y2="22"/>
+      </g>
+      <text x="90" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Target</text>
+      <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">in-scope only</text>
+    </g>
+
+    <!-- 2. Crawl + JS -->
+    <g transform="translate(275,0)">
+      <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
+      <g transform="translate(90,34)">
+        <rect x="-20" y="-16" width="40" height="32" rx="5" fill="none" stroke="#2bd66a" stroke-width="2"/>
+        <text x="0" y="6" text-anchor="middle" font-size="15" font-weight="700" fill="#2bd66a" font-family="ui-monospace, monospace">&lt;/&gt;</text>
+      </g>
+      <text x="90" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Crawl + JS</text>
+      <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">hidden endpoints</text>
+    </g>
+
+    <!-- 3. Fingerprint -->
+    <g transform="translate(510,0)">
+      <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
+      <g transform="translate(90,34)">
+        <rect x="-24" y="-15" width="48" height="7" rx="3.5" fill="#ff9c9c"/>
+        <rect x="-24" y="-3.5" width="36" height="7" rx="3.5" fill="#ffd87a"/>
+        <rect x="-24" y="8" width="44" height="7" rx="3.5" fill="#9cc7ff"/>
+      </g>
+      <text x="90" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Fingerprint</text>
+      <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">stack + version</text>
+    </g>
+
+    <!-- 4. AI brain -->
+    <g transform="translate(745,0)">
+      <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
+      <g transform="translate(90,34)">
+        <rect x="-17" y="-17" width="34" height="34" rx="7" fill="#2d2350" stroke="#8b5cf6" stroke-width="2"/>
+        <text x="0" y="6" text-anchor="middle" font-size="14" font-weight="800" fill="#c9b6ff">AI</text>
+        <g stroke="#8b5cf6" stroke-width="2">
+          <line x1="-17" y1="-8" x2="-24" y2="-8"/><line x1="-17" y1="8" x2="-24" y2="8"/>
+          <line x1="17" y1="-8" x2="24" y2="-8"/><line x1="17" y1="8" x2="24" y2="8"/>
+          <line x1="-8" y1="-17" x2="-8" y2="-24"/><line x1="8" y1="-17" x2="8" y2="-24"/>
+          <line x1="-8" y1="17" x2="-8" y2="24"/><line x1="8" y1="17" x2="8" y2="24"/>
+        </g>
+      </g>
+      <text x="90" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">AI brain</text>
+      <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">OpenAI · LiteLLM</text>
+    </g>
+
+    <!-- 5. Attack graph -->
+    <g transform="translate(980,0)">
+      <rect width="180" height="112" rx="12" fill="#171c24" stroke="#2a3340"/>
+      <g transform="translate(90,34)" stroke="#4ea1ff" stroke-width="2">
+        <line x1="-18" y1="-12" x2="6" y2="2"/><line x1="6" y1="2" x2="20" y2="-12"/>
+        <line x1="6" y1="2" x2="0" y2="18"/>
+        <circle cx="-18" cy="-12" r="5" fill="#1f3a5f"/>
+        <circle cx="6" cy="2" r="6" fill="#2bd66a" stroke="#2bd66a"/>
+        <circle cx="20" cy="-12" r="5" fill="#1f3a5f"/>
+        <circle cx="0" cy="18" r="5" fill="#1f3a5f"/>
+      </g>
+      <text x="90" y="80" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Attack graph</text>
+      <text x="90" y="99" text-anchor="middle" font-size="12" fill="#8593a3">asset relations</text>
+    </g>
+  </g>
+
+  <!-- footer badges -->
+  <g transform="translate(40,372)" font-size="13" font-weight="600">
+    <g><rect x="0" y="0" width="148" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="74" y="20" text-anchor="middle" fill="#d7dee6">Web dashboard</text></g>
+    <g transform="translate(160,0)"><rect x="0" y="0" width="158" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="79" y="20" text-anchor="middle" fill="#d7dee6">OWASP-hardened</text></g>
+    <g transform="translate(330,0)"><rect x="0" y="0" width="150" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="75" y="20" text-anchor="middle" fill="#d7dee6">Live SSE updates</text></g>
+    <g transform="translate(492,0)"><rect x="0" y="0" width="92" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="46" y="20" text-anchor="middle" fill="#d7dee6">Docker</text></g>
+    <g transform="translate(596,0)"><rect x="0" y="0" width="150" height="30" rx="15" fill="#1f2630" stroke="#2a3340"/><text x="75" y="20" text-anchor="middle" fill="#d7dee6">SQLite history</text></g>
+  </g>
+</svg>

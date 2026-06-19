@@ -20,6 +20,9 @@ discovery.db-shm
 attack-graph.dot
 *.png
 *.svg
+# ...kecuali ilustrasi/aset README yang memang sengaja di-commit.
+!assets/
+!assets/**
 # Variabel lingkungan / kredensial.
 .env
 .env.*

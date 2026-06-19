@@ -1,5 +1,9 @@
 # discovery_X
 
+<p align="center">
+  <img src="assets/banner.svg" alt="discovery_X — agen discovery/recon otonom: Target → Crawl+JS → Fingerprint → AI brain → Attack graph" width="100%">
+</p>
+
 **Agen discovery/recon otonom untuk pentesting terautorisasi**, dikendalikan penuh dari
 dashboard web. Mengumpulkan permukaan serangan sebuah target lalu memakai AI untuk
 menyimpulkan endpoint tersembunyi — dengan guardrail scope yang ketat.
